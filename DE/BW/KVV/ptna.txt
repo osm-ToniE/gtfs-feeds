@@ -1,0 +1,2 @@
+id,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,comment,network_name,network_name_url
+1,2020-03-31,2020-03-31,2020-03-31,"","Karlsruher Verkehrsverbund GmbH",https://www.kvv.de/,2020-03-27,https://www.kvv.de/fahrplan/fahrplaene/open-data.html,"","","""gemeinfrei"" (Creative Commons CCZero Lizenz)","",0,"","Karlsruher Verkehrsverbund",https://www.kvv.de/
