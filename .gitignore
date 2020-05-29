@@ -1,6 +1,34 @@
-# ignore sub directories with dates
+# ignore sub directories with dates or special names
 20??-??-??
+ignore
+Ignore
+Test
+test
+work
+Work
 
 # ignore sqlite3 DBs
 *.db
 
+# ignore GTFS files
+*.zip
+feed_info.txt
+agency.txt
+routes.txt
+calendar.txt
+calendar_dates,txt
+trips.txt
+stops.txt
+stop_times.txt
+shapes.txt
+fare_attributes.txt
+fare_rules.txt
+frequencies.txt
+transfers.txt
+pathways.txt
+levels.txt
+translations.txt
+attributions.txt
+
+# ignore log files, ...
+*.log
