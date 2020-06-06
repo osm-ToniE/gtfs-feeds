@@ -1,2 +1,2 @@
-id,prepared,network,network_short,network_guid,gtfs_agency_is_operator
-1,2020-04-19,"Verkehrsverbund Landkreis Tuttlingen",TUTicket,DE-BW-TUTicket,0
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex
+1,,"Verkehrsverbund Landkreis Tuttlingen",TUTicket,DE-BW-TUTicket,0,"^[^\.]+\.[^\.]+\.([^\.]+\.[^\.]+\.[^\.]+)$"
