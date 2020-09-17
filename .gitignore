@@ -30,5 +30,6 @@ levels.txt
 translations.txt
 attributions.txt
 
-# ignore log files, ...
+# ignore log files, tmp files ...
 *.log
+*.tmp
