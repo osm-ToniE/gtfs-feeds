@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "DE-SPVN"
+echo "DE-SPNV"

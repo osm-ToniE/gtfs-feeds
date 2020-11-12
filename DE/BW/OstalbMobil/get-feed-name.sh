@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "DE-BW-OstalbModil"
+echo "DE-BW-OstalbMobil"
