@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "BR-MG-BHTrans-Conventional"
+echo "BR-MG-BHTrans-Convencional"
