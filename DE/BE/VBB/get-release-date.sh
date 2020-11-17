@@ -8,7 +8,7 @@ RELEASE_URL=$(./get-release-url.sh)
 
 mkdir tempdir
 
-wget -q -O tempdir/gtfs.zip --user-agent="PTNA @ ptna.openstreetmap.de" $RELEASE_URL
+wget -q -O tempdir/gtfs.zip $RELEASE_URL
 
 if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
 then
