@@ -1,2 +1,0 @@
-id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex
-1,"","","","",1,"^[^\.]+\.[^\.]+\.([^\.]+\.[^\.]+\.[^\.]+)$"
