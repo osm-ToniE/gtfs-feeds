@@ -10,7 +10,7 @@ LOCATION=$(curl -sI $PERMALINK | fgrep -i 'Location:' | sed -e 's/^Location:\s*/
 
 if [ -n "$LOCATION" ]
 then
-    if [ "$(echo $LOCATION | grep -c '^https://opentransportdata.swiss/de/dataset/')" == 1 ]
+    if [ "$(echo $LOCATION | grep -c '^https://opentransportdata.swiss/')" == 1 ]
     then
         RELEASE_URL=$LOCATION
     fi
