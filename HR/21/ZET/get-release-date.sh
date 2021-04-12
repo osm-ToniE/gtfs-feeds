@@ -7,9 +7,9 @@
 SCANURL="https://www.zet.hr/odredbe/datoteke-u-gtfs-formatu/669"
 
 SCANDATE=$(curl -s $SCANURL -o - | \
-           egrep -i 'href="https://www.zet.hr/UserDocsImages/Dokumenti i obrasci za preuzimanje/GTFS-[0-9]+\.[0-9]+\.[0-9][0-9][0-9][0-9]\.\.zip' | \
+           egrep -i 'href="https://www.zet.hr/UserDocsImages/Dokumenti i obrasci za preuzimanje/GTFS\s*-\s*[0-9]+\.[0-9]+\.[0-9][0-9][0-9][0-9]\.\.zip' | \
            head -1 | \
-           sed -e 's/^.*GTFS-//i' \
+           sed -e 's/^.*GTFS\s*-\s*//i' \
                -e 's/\.\.zip.*$//')
 
 if [ -n "$SCANDATE" ]
