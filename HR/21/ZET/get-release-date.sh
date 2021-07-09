@@ -1,24 +1,22 @@
 #!/bin/bash
 
 #
-# get URL to download latest GTFS feed
+# retrieve release date of latest GTFS feed in form "YYYY-MM-DD"
 #
 
-SCANURL="https://www.zet.hr/odredbe/datoteke-u-gtfs-formatu/669"
+RELEASE_URL=$(./get-release-url.sh)
 
-SCANDATE=$(curl -s $SCANURL -o - | \
-           egrep -i 'href="https://www.zet.hr/UserDocsImages/Dokumenti i obrasci za preuzimanje/GTFS\s*-\s*[0-9]+\.[0-9]+\.[0-9][0-9][0-9][0-9]\.\.zip' | \
-           head -1 | \
-           sed -e 's/^.*GTFS\s*-\s*//i' \
-               -e 's/\.\.zip.*$//')
-
-if [ -n "$SCANDATE" ]
+if [ -n "$RELEASE_URL" ]
 then
-    SWAPPEDDATE=$(echo $SCANDATE | sed -e 's/\([0-9][0-9]*\)\.\([0-9][0-9]*\)\.\([0-9][0-9][0-9][0-9]\)/\3-\2-\1/')
-    FIXEDDATE=$(date -d"$SWAPPEDDATE" '+%Y-%m-%d')
-    if [ "$(echo $FIXEDDATE | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+    LAST_MODIFIED=$(curl -sI "$RELEASE_URL" | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+
+    if [ -n "$LAST_MODIFIED" ]
     then
-        RELEASE_DATE=$FIXEDDATE
+        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        then
+            RELEASE_DATE=$result
+        fi
     fi
 fi
 
