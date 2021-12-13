@@ -1,0 +1,2 @@
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1
+1,"","Münchner Verkehrs- und Tarifverbund",MVV,DE-BY-MVV,0,"^[^\.]+\.[^\.]+\.([^\.]+\.[^\.]+\.[^\.]+)$",0
