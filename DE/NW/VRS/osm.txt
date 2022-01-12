@@ -1,2 +1,2 @@
-id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1
-1,"","Verkehrsverbund Rhein-Sieg",VRS,DE-NW-VRS,1,"",0
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
+1,"","Verkehrsverbund Rhein-Sieg",VRS,DE-NW-VRS,1,"",0,

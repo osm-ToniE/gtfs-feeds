@@ -1,2 +1,2 @@
-id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1
-1,2020-08-28,"Instituto Regulador del Transporte del Municipio de Managua","IRTRAMMA","NI-MN-IRTRAMMA",0,"",0
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
+1,2020-08-28,"Instituto Regulador del Transporte del Municipio de Managua","IRTRAMMA","NI-MN-IRTRAMMA",0,"",0,
