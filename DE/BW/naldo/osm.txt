@@ -1,2 +1,2 @@
 id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
-1,"","Verkehrsverbund Neckar-Alb-Donau","naldo","DE-BW-naldo",1,"^[^\.]+\.[^\.]+\.([^\.]+\.[^\.]+\.[^\.]+)$",0,
+1,"","Verkehrsverbund Neckar-Alb-Donau","naldo","DE-BW-naldo",1,"^[^\.]+\.[^\.]+\.([^\.]+\.[^\.]+\.[^\.]+)$",0,DE-BW-naldo
