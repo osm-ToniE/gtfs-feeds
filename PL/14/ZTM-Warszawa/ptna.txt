@@ -1,2 +1,2 @@
 id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
-1,"pl","","",,,,,,,,"https://mkuran.pl/gtfs/warsaw.zip","","","ZTM Warszawa Data Usage Terms (Polish)","https://www.ztm.waw.pl/pliki-do-pobrania/dane-rozkladowe/",0,0,"","Szczegóły, ..."
+1,"pl","Zarząd Transportu Miejskiego Warszawa","https://www.ztm.waw.pl/",,,,,,,,"https://mkuran.pl/gtfs/warsaw.zip","","","ZTM Warszawa Data Usage Terms (Polish)","https://www.ztm.waw.pl/pliki-do-pobrania/dane-rozkladowe/",0,0,"","Szczegóły, ..."
