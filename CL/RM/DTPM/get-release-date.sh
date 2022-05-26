@@ -8,15 +8,13 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    LAST_MODIFIED=$(curl -sI $RELEASE_URL | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    # https://www.dtpm.cl/descargas/gtfs/GTFS-V70-PO20220228.zip
 
-    if [ -n "$LAST_MODIFIED" ]
+    DATESTRING=$(echo $RELEASE_URL | sed -e 's/^.*PO//i' -e 's/\.zip.*$//' -e 's/^\(20[0-9][0-9]\)\([01][0-9]\)\([0123][0-9]\)$/\1-\2-\3/')
+
+    if [ "$(echo $DATESTRING | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
     then
-        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
-        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
-        then
-            RELEASE_DATE=$result
-        fi
+        RELEASE_DATE=$DATESTRING
     fi
 fi
 

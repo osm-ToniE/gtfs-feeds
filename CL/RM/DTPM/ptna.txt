@@ -1,2 +1,2 @@
 id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
-1,"es","Red Metropolitna de Movilidad",https://www.red.cl,"","","","","Dirección de Transporte Público Metropolitano",https://www.dtpm.cl,"",https://www.dtpm.cl/index.php/noticias/gtfs-vigente,,,,,1,1,"","Details, ..."
+1,"es","Red Metropolitna de Movilidad",https://www.red.cl,"","","","","Dirección de Transporte Público Metropolitano",https://www.dtpm.cl,"",https://www.dtpm.cl/index.php/noticias/gtfs-vigente,,,,,1,1,"",""Detalles, ..."

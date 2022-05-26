@@ -3,6 +3,20 @@
 #
 # get URL to download latest GTFS feed
 #
-# NOTE Unofficial url, from Mobility DataBase
 
-echo "https://storage.googleapis.com/storage/v1/b/mdb-latest/o/cl-region-metropolitana-de-santiago-santiago-dptm-gtfs-987.zip?alt=media"
+BASEURL="https://www.dtpm.cl"
+SCANURL="${BASEURL}/index.php/noticias/gtfs-vigente"
+
+LOCATION=$(curl -s $SCANURL -o - | \
+           sed -e 's/<\/a>/<\/a>\n/g' -e 's/<a>/<a>\n/g'  | \
+           egrep -i 'href="/descargas/gtfs/GTFS-.*?\.zip">GTFS' | \
+           head -1               | \
+           sed -e 's/^.*href="//i' \
+               -e 's/".*$//')
+
+if [ -n "$LOCATION" ]
+then
+    RELEASE_URL="${BASEURL}$LOCATION"
+fi
+
+echo $RELEASE_URL
