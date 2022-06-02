@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"no","Ruter (Oslo, ...)","https://ruter.no/","","","","","Entur","https://www.entur.org","","https://developer.entur.org/stops-and-timetable-data","","","Norwegian Licence for Open Government Data (NLOD) 2.0","https://data.norge.no/nlod/en/2.0/",0,0,"","Detaljer, ..."
