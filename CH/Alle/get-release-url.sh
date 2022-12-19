@@ -4,7 +4,7 @@
 # get URL to download latest GTFS feed
 #
 
-PERMALINK="https://opentransportdata.swiss/de/dataset/timetable-2022-gtfs2020/permalink"
+PERMALINK="https://opentransportdata.swiss/de/dataset/timetable-2023-gtfs2020/permalink"
 
 LOCATION=$(curl -sI $PERMALINK | fgrep -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
 
