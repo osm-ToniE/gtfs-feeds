@@ -21,9 +21,9 @@ function get_access_token() {
     if [ -z "${AT_MOBILITAETSVERBUENDE_TOKEN}" ]
     then
         echo -n "Please enter username for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
-        read ${MY_USERNAME}
+        read MY_USERNAME
         echo -n "Please enter password for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
-        read ${MY_PASSWORD}
+        read MY_PASSWORD
         curl -sS -k -X POST \
             -d "client_id=${CLIENT_ID}" \
             -d "username=${MY_USERNAME}" \
