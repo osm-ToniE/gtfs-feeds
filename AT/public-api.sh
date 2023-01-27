@@ -14,16 +14,20 @@ function get_access_token() {
     then
         echo "${AT_MOBILITAETSVERBUENDE_TOKEN}"
     else
-        echo -n "Please enter access token for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
-        read AT_MOBILITAETSVERBUENDE_TOKEN
-        echo ${AT_MOBILITAETSVERBUENDE_TOKEN}
-    fi
-    if [ -z "${AT_MOBILITAETSVERBUENDE_TOKEN}" ]
-    then
-        echo -n "Please enter username for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
-        read MY_USERNAME
-        echo -n "Please enter password for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
-        read MY_PASSWORD
+        if [ -n "${AT_MOBILITAETSVERBUENDE_USERNAME}" ]
+        then
+            MY_USERNAME="${AT_MOBILITAETSVERBUENDE_USERNAME}"
+        else
+            echo -n "Please enter username for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
+            read MY_USERNAME
+        fi
+        if [ -n "${AT_MOBILITAETSVERBUENDE_PASSWORD}" ]
+        then
+            MY_PASSWORD="${AT_MOBILITAETSVERBUENDE_PASSWORD}"
+        else
+            echo -n "Please enter password for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
+            read MY_PASSWORD
+        fi
         curl -sS -k -X POST \
             -d "client_id=${CLIENT_ID}" \
             -d "username=${MY_USERNAME}" \
