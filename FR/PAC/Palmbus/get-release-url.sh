@@ -10,7 +10,7 @@ LOCATION=$(curl -sI $PERMALINK | fgrep -i 'Location:' | sed -e 's/^Location:\s*/
 
 if [ -n "$LOCATION" ]
 then
-    if [ "$(echo $LOCATION | grep -c 'du-reseau-palmbus-cannes-pays-de-lerins-gtfs')" == 1 ]
+    if [ "$(echo $LOCATION | grep -c 'du-reseau-palmbus-cannes')" == 1 ]
     then
         RELEASE_URL=$LOCATION
     fi
