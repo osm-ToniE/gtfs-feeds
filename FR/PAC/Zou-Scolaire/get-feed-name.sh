@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "FR-PAC-Zou-Proximite"
+echo "FR-PAC-Zou-Scolaire"
