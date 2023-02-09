@@ -26,7 +26,7 @@ function get_access_token() {
             MY_PASSWORD="${AT_MOBILITAETSVERBUENDE_PASSWORD}"
         else
             echo -n "Please enter password for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
-            read MY_PASSWORD
+            read -s MY_PASSWORD
         fi
         curl -sS -k -X POST \
             -d "client_id=${CLIENT_ID}" \
