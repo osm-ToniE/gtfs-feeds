@@ -8,11 +8,15 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    SCANDATE=$(echo $RELEASE_URL | egrep 'GTFS.*[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\.ZIP' | sed -e 's/^.*\([0-9][0-9][0-9][0-9]\)\([0-9][0-9]\)\([0-9][0-9]\).*$/\1-\2-\3/')
+    LAST_MODIFIED=$(curl -sI $RELEASE_URL | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
 
-    if [ -n "$SCANDATE" ]
+    if [ -n "$LAST_MODIFIED" ]
     then
-        RELEASE_DATE=$SCANDATE
+        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        then
+            RELEASE_DATE=$result
+        fi
     fi
 fi
 
