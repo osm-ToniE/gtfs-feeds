@@ -12,16 +12,21 @@ token=any
 
 dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$WANTED\") | .id)[]")
 
-created=$(get_dataset $token $dsid | jq '.activeVersion | .created' | sed -e 's/^\"//' -e 's/\"$//')
-
 RELEASE_DATE=""
 
-if [ -n "$created" ]
+dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$WANTED\") | .id)[]")
+
+if [ -n "$dsid" ]
 then
-    result=$(date -d "$created" '+%Y-%m-%d')
-    if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+    created=$(get_dataset $token $dsid | jq '.activeVersion | .created' | sed -e 's/^\"//' -e 's/\"$//')
+
+    if [ -n "$created" ]
     then
-        RELEASE_DATE=$result
+        result=$(date -d "$created" '+%Y-%m-%d')
+        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        then
+            RELEASE_DATE=$result
+        fi
     fi
 fi
 
