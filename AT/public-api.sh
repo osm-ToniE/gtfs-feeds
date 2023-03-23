@@ -28,7 +28,7 @@ function get_access_token() {
             echo -n "Please enter password for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
             read -s MY_PASSWORD
         fi
-        curl --connect-timeout 30 -sS -k -X POST \
+        curl --connect-timeout 30 --max-time 300 -sS -k -X POST \
             -d "client_id=${CLIENT_ID}" \
             -d "username=${MY_USERNAME}" \
             -d "password=${MY_PASSWORD}" \
@@ -41,7 +41,7 @@ function get_access_token() {
 # Needs access token
 function get_dataset_list() {
     local token=$1
-    curl --connect-timeout 30 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS} \
+    curl --connect-timeout 30 --max-time 300 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS} \
         -H "Accept: application/json" \
         -H "Authorization: Bearer $token"
 }
@@ -51,7 +51,7 @@ function get_dataset_list() {
 function get_dataset() {
     local token=$1
     local id=$2
-    curl --connect-timeout 30 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS}/${id} \
+    curl --connect-timeout 30 --max-time 300 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS}/${id} \
         -H "Accept: application/json" \
         -H "Authorization: Bearer $token"
 }
@@ -61,7 +61,7 @@ function get_dataset() {
 function download_dataset() {
     local token=$1
     local id=$2
-    curl --connect-timeout 30 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS}/${id}/file \
+    curl --connect-timeout 30 --max-time 300 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS}/${id}/file \
         -H "Accept: application/zip" \
         -H "Authorization: Bearer $token"
 }
