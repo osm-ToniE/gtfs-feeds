@@ -7,7 +7,7 @@
 BASEURL="https://www.dtpm.cl"
 SCANURL="${BASEURL}/index.php/noticias/gtfs-vigente"
 
-LOCATION=$(curl -s $SCANURL -o - | \
+LOCATION=$(curl --connect-timeout 30 -s $SCANURL -o - | \
            sed -e 's/<\/a>/<\/a>\n/g' -e 's/<a>/<a>\n/g'  | \
            egrep -i 'href="/descargas/gtfs/GTFS-.*?\.zip">GTFS' | \
            head -1               | \

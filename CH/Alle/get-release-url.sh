@@ -6,7 +6,7 @@
 
 PERMALINK="https://opentransportdata.swiss/de/dataset/timetable-2023-gtfs2020/permalink"
 
-LOCATION=$(curl -sI $PERMALINK | fgrep -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
+LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | fgrep -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
 
 if [ -n "$LOCATION" ]
 then
