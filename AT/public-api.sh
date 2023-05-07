@@ -20,7 +20,7 @@ function get_access_token() {
         else
             echo -n "Please enter username for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
             read MY_USERNAME
-            echo ""
+            echo "" >> /dev/stderr
         fi
         if [ -n "${AT_MOBILITAETSVERBUENDE_PASSWORD}" ]
         then
@@ -28,7 +28,7 @@ function get_access_token() {
         else
             echo -n "Please enter password for Mobilitätsverbünde in Austria (https://data.mobilitaetsverbuende.at): " >> /dev/stderr
             read -s MY_PASSWORD
-            echo ""
+            echo "" >> /dev/stderr
         fi
         curl --connect-timeout 30 --max-time 300 -sS -k -X POST \
             -d "client_id=${CLIENT_ID}" \
