@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"en","Massachusetts Bay Transportation Authority","https://www.mbta.com/","","","","","MBTA","https://www.mbta.com/developers/gtfs/","","https://cdn.mbta.com/MBTA_GTFS.zip","","","MassDOT Developers License Agreement,","https://www.mass.gov/files/documents/2017/10/27/develop_license_agree_0.pdf",0,0,"","Details, ..."
