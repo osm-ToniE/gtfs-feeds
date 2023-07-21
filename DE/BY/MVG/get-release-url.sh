@@ -4,4 +4,4 @@
 # get URL to download latest GTFS feed
 #
 
-echo "https://www.mvg.de/static/gtfs/gtfs-mvg.zip"
+echo "https://www.mvg.de/static/gtfs/google_transit.zip"
