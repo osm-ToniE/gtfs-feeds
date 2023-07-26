@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"en","Southern Vectis, Isle of Wight","https://www.islandbuses.info/","","","","","Southern Vectis","https://www.islandbuses.info/","","https://www.islandbuses.info/open-data","","","Open Government License Version 3.0","http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",0,0,"","Details, ..."
