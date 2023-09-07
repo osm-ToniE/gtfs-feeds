@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"en","Pioneer Valley Transit Authority","http://www.pvta.com/","","","","","Pioneer Valley Transit Authority","http://www.pvta.com/","","http://www.pvta.com/g_trans/google_transit.zip","","","MassDOT Developers License Agreement,","https://www.mass.gov/doc/developers-license-agreement-11132009/download",0,0,"","Details, ..."
