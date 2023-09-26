@@ -10,7 +10,7 @@ LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | fgrep -i 'Location:' | sed
 
 if [ -n "$LOCATION" ]
 then
-    if [ "$(echo $LOCATION | grep -c 'lignes-regulieres-de-transports-en-pays-de-grasse')" == 1 ]
+    if [ "$(echo $LOCATION | grep -c 'sillages-en-pays-de-grasse-urbain-et-scolaire')" == 1 ]
     then
         RELEASE_URL=$LOCATION
     fi

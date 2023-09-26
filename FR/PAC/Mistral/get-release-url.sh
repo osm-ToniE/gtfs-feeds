@@ -4,4 +4,4 @@
 # get URL to download latest GTFS feed
 #
 
-echo "https://tsvc.rmtt.cityway.fr/api/Export/v1/GetExportedDataFile?ExportFormat=Gtfs&OperatorCode=RMTT"
+echo "https://s3.eu-west-1.amazonaws.com/files.orchestra.ratpdev.com/networks/rd-toulon/exports/gtfs-complet.zip"
