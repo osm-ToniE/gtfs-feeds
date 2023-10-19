@@ -17,6 +17,16 @@ then
         then
             RELEASE_DATE=$result
         fi
+    else
+        LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+        if [ -n "$LAST_MODIFIED" ]
+        then
+            result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+            if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+            then
+                RELEASE_DATE=$result
+            fi
+        fi
     fi
 fi
 
