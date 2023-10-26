@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"nl","The Nederlande","","","","","","OVapi B.V.","https://ovapi.nl/","","https://gtfs.ovapi.nl/nl/gtfs-nl.zip","","","CC0","https://creativecommons.org/publicdomain/zero/1.0/deed.nl",0,0,"","Details, ..."
