@@ -10,8 +10,6 @@ WANTED=$(./get-feed-id.sh)
 
 token=any
 
-dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$WANTED\") | .id)[]")
-
 RELEASE_DATE=""
 
 dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$WANTED\") | .id)[]")
