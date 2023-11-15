@@ -9,7 +9,7 @@ LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | fgrep -i 'Location:' | sed
 
 if [ -n "$LOCATION" ]
 then
-    if [ "$(echo $LOCATION | grep -c 'gtfs.zip')" == 1 ]
+    if [ "$(echo $LOCATION | grep -c 'google_transit.zip')" == 1 ]
     then
         RELEASE_URL=$LOCATION
     fi
