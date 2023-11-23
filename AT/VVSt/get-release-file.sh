@@ -12,9 +12,9 @@ token=$(get_access_token)
 
 dsid=$(get_dataset_list any | jq -r "map({ name, id } | select( .name == \"$WANTED\") | .id)[]")
 
-if [ -n "$token" -a -n "$dsid" ]
+if [ -n "$token" -a -n "$dsid" -a -n "$YEAR" ]
 then
-    download_dataset $token $dsid
+    download_dataset $token $dsid $YEAR
 else
     echo ""
 fi

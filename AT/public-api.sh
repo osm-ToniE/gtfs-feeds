@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# for details see: https://mobilitaetsverbuende.atlassian.net/wiki/spaces/DBP/pages/185827383/Public+API+Download
+# for details see: https://mobilitaetsverbuende.atlassian.net/wiki/spaces/DBP/pages/231145473/Public+API+Download+for+DBP+Version+2
 
 KEYCLOAK="https://user.mobilitaetsverbuende.at"
 REALM="dbp-public"
 DBP_BASE=https://data.mobilitaetsverbuende.at
 CLIENT_ID="dbp-script-download"
 ENDPOINT_DATA_SETS=/api/public/v1/data-sets
+YEAR="2023"
+
 
 # Get the access token
 function get_access_token() {
@@ -43,7 +45,7 @@ function get_access_token() {
 # Needs access token
 function get_dataset_list() {
     local token=$1
-    curl --connect-timeout 30 --max-time 300 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS} \
+    curl --connect-timeout 30 --max-time 300 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS}?tagFilterModeInclusive=true \
         -H "Accept: application/json" \
         -H "Authorization: Bearer $token"
 }
@@ -63,7 +65,8 @@ function get_dataset() {
 function download_dataset() {
     local token=$1
     local id=$2
-    curl --connect-timeout 30 --max-time 300 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS}/${id}/file \
+    local year=$3
+    curl --connect-timeout 30 --max-time 300 -sS -k ${DBP_BASE}${ENDPOINT_DATA_SETS}/${id}/${year}/file \
         -H "Accept: application/zip" \
         -H "Authorization: Bearer $token"
 }

@@ -16,7 +16,7 @@ dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$W
 
 if [ -n "$dsid" ]
 then
-    created=$(get_dataset $token $dsid | jq '.activeVersion | .created' | sed -e 's/^\"//' -e 's/\"$//')
+    created=$(get_dataset $token $dsid | jq '.activeVersions[0] | .dataSetVersion | .created' | sed -e 's/^\"//' -e 's/\"$//')
 
     if [ -n "$created" ]
     then

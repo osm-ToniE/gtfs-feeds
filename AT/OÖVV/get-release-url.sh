@@ -14,7 +14,7 @@ dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$W
 
 if [ -n "$dsid" ]
 then
-    echo "${DBP_BASE}${ENDPOINT_DATA_SETS}/${dsid}/file"
+    echo "${DBP_BASE}${ENDPOINT_DATA_SETS}/${dsid}/${YEAR}/file"
 else
     echo ""
 fi
