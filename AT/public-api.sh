@@ -7,8 +7,6 @@ REALM="dbp-public"
 DBP_BASE=https://data.mobilitaetsverbuende.at
 CLIENT_ID="dbp-public-ui"
 ENDPOINT_DATA_SETS=/api/public/v1/data-sets
-YEAR="2023"
-
 
 # Get the access token
 function get_access_token() {

@@ -14,7 +14,14 @@ dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$W
 
 if [ -n "$dsid" ]
 then
-    echo "${DBP_BASE}${ENDPOINT_DATA_SETS}/${dsid}/${YEAR}/file"
+    year=$(get_dataset $token $dsid | jq '.activeVersions[0] | .year' | sed -e 's/^\"//' -e 's/\"$//')
+
+    if [ "$(echo $year | grep -c '^20[0-9][0-9]$')" == 1 ]
+    then
+        echo "${DBP_BASE}${ENDPOINT_DATA_SETS}/${dsid}/${year}/file"
+    else
+        echo ""
+    fi
 else
     echo ""
 fi
