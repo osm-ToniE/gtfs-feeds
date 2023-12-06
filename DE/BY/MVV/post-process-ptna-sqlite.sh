@@ -2,7 +2,7 @@
 
 DB="ptna-gtfs-sqlite.db"
 
-SQ_OPTIONS="-csv -header"
+SQ_OPTIONS="-init /dev/null"
 
 # Bus 222 starts in GTFS with 2 times "Deisenhofen", that's OK, so deletion of comment in DB
 

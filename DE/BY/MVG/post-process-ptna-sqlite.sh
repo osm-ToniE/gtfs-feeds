@@ -2,7 +2,7 @@
 
 DB="ptna-gtfs-sqlite.db"
 
-SQ_OPTIONS="-csv -header"
+SQ_OPTIONS="-init /dev/null"
 
 # Bus O7 has only 2 Stops, that's OK
 
