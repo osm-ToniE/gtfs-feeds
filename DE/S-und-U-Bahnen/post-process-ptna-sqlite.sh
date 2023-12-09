@@ -2,11 +2,11 @@
 
 DB="ptna-gtfs-sqlite.db"
 
-SQ_OPTIONS=""
+SQ_OPTIONS="-init /dev/null"
 
 # At least route_long_name="S7" and route_short_name="M07" (S7 of MVV) should be in the DB to make if valid
 
-S7COUNT=$(sqlite3 $DB "SELECT COUNT(route_id) FROM routes WHERE route_long_name='S7' AND route_short_name='M07';")
+S7COUNT=$(sqlite3 $SQ_OPTIONS $DB "SELECT COUNT(route_id) FROM routes WHERE route_long_name='S7' AND route_short_name='M07';")
 
 if [ "$S7COUNT" -ne "1" ]
 then
