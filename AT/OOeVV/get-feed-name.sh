@@ -4,4 +4,4 @@
 # print name of GTFS feed in PTNA
 #
 
-echo "AT-OÖVV"
+echo "AT-OOeVV"
