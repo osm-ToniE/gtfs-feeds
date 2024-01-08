@@ -4,13 +4,13 @@
 # get URL to download latest GTFS feed
 #
 
-SCANURL="https://transport.data.gouv.fr/resources/81437"
+DATASET_ID="580defb1a3a7292dcfa9d33f"
 
-LOCATION=$(curl --connect-timeout 30 -s $SCANURL -o - | \
-           egrep -i 'href="https://eu\.ftp\.opendatasoft\.com/star/gtfs/GTFS.*\.zip"' | \
-           tail -1 | \
-           sed -e 's/^.*href="https:/https:/i' \
-               -e 's/\.zip.*$/.zip/')
+JSON_URL="https://transport.data.gouv.fr/api/datasets/$DATASET_ID"
+
+LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o - | \
+         jq '.resources[0] | .original_url'           | \
+         sed -e 's/"//g')
 
 if [ -n "$LOCATION" ]
 then

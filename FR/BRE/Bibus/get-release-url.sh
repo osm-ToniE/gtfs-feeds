@@ -4,6 +4,17 @@
 # get URL to download latest GTFS feed
 #
 
-RELEASE_URL="https://ratpdev-mosaic-prod-bucket-raw.s3-eu-west-1.amazonaws.com/11/exports/1/gtfs.zip"
+DATASET_ID="55ffbe0888ee387348ccb97d"
+
+JSON_URL="https://transport.data.gouv.fr/api/datasets/$DATASET_ID"
+
+LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o - | \
+         jq '.resources[0] | .original_url'           | \
+         sed -e 's/"//g')
+
+if [ -n "$LOCATION" ]
+then
+    RELEASE_URL=$LOCATION
+fi
 
 echo $RELEASE_URL
