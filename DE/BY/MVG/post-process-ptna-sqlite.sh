@@ -9,6 +9,10 @@ SQ_OPTIONS="-init /dev/null"
 sqlite3 $SQ_OPTIONS $DB "UPDATE ptna_trips_comments SET suspicious_number_of_stops='' WHERE trip_id LIKE '%-O7-%';"
 sqlite3 $SQ_OPTIONS $DB "UPDATE ptna_trips_comments SET suspicious_number_of_stops='' WHERE trip_id LIKE '%-407-%';"
 
+# Bus 62 starts in GTFS with 2 times "Rotkreuzplatz", that's OK, so deletion of comment in DB
+
+sqlite3 $SQ_OPTIONS $DB "UPDATE ptna_trips_comments SET suspicious_start='' WHERE trip_id IN (SELECT trip_id FROM stop_times JOIN stops ON stops.stop_id=stop_times.stop_id WHERE trip_id LIKE '%-62-G-%' AND stop_name='Rotkreuzplatz' AND stop_sequence=1);"
+
 # Bus 97 has only 2 Stops, that's OK
 
 sqlite3 $SQ_OPTIONS $DB "UPDATE ptna_trips_comments SET suspicious_number_of_stops='' WHERE trip_id LIKE '%-97-%';"
