@@ -1,2 +1,2 @@
-id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
-1,,"Société de transport de Lévis","STLevis","CA-QC-STLevis",1,"",0,"CA-QC-STLevis"
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis,wn,route_master_name_suggestion,route_name_suggestion
+1,,"Société de transport de Lévis","STLevis","CA-QC-STLevis",1,"",0,"CA-QC-STLevis","","Parcour {route_short_name}","Parcour {route_short_name} vers {trip_headsign}"
