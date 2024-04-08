@@ -1,2 +1,2 @@
 id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis,wn,route_master_name_suggestion,route_name_suggestion
-1,,"Réseau de transport de la Capitale","RTC","CA-QC-RTC",1,"",0,"CA-QC-RTC","","Parcour {route_short_name}","Parcour {route_short_name} vers {trip_headsign}"
+1,,"Réseau de transport de la Capitale","RTC","CA-QC-RTC",1,"",0,"CA-QC-RTC","","Parcours {route_short_name}","Parcours {route_short_name} vers {trip_headsign}"
