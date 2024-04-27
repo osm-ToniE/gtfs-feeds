@@ -4,6 +4,10 @@ DB="ptna-gtfs-sqlite.db"
 
 SQ_OPTIONS="-init /dev/null"
 
+# Bus N77 starts in GTFS with 2 times "Freiham Bahnhof", that's OK, so deletion of comment in DB
+
+sqlite3 $SQ_OPTIONS $DB "UPDATE ptna_trips_comments SET suspicious_start='' WHERE trip_id IN (SELECT trip_id FROM stop_times JOIN stops ON stops.stop_id=stop_times.stop_id WHERE trip_id LIKE '%33-N77-G-%' AND stop_name='Freiham Bf.' AND stop_sequence=2);"
+
 # Bus X204 ends in GTFS with 2 times "St. Achaz", that's OK, so deletion of comment in DB
 
 sqlite3 $SQ_OPTIONS $DB "UPDATE ptna_trips_comments SET suspicious_end='' WHERE trip_id IN (SELECT trip_id FROM stop_times JOIN stops ON stops.stop_id=stop_times.stop_id WHERE trip_id LIKE '%-204-%' AND stop_name='St. Achaz' AND stop_sequence=14);"
