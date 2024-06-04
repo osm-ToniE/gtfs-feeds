@@ -12,7 +12,7 @@ token=any
 
 RELEASE_DATE=""
 
-dsid=$(get_dataset_list $token | jq -r "map({ name, id } | select( .name == \"$WANTED\") | .id)[]")
+dsid=$(get_dataset_list $token | jq -r "map({ nameDe, id } | select( .nameDe == \"$WANTED\") | .id)[]")
 
 if [ -n "$dsid" ]
 then

@@ -10,7 +10,7 @@ WANTED=$(./get-feed-id.sh)
 
 token=$(get_access_token)
 
-dsid=$(get_dataset_list any | jq -r "map({ name, id } | select( .name == \"$WANTED\") | .id)[]")
+dsid=$(get_dataset_list any | jq -r "map({ nameDe, id } | select( .nameDe == \"$WANTED\") | .id)[]")
 
 if [ -n "$token" -a -n "$dsid" ]
 then
