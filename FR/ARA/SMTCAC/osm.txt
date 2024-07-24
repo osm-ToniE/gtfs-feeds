@@ -1,0 +1,2 @@
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
+1,,"Syndicat Mixte des Transports en commun de l’agglomération Clermontoise","SMTC-AC","FR-ARA-SMTCAC",1,"",0,FR-ARA-SMTCAC
