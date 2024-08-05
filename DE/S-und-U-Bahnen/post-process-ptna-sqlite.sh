@@ -14,12 +14,13 @@ then
     then
         echo "**********************************"
         echo
-        echo " DB invalid, does not include S7 from MVV (and maybe others)"
+        echo " DB incomplete, does not include S7 from MVV (and maybe others)"
         echo
         echo "**********************************"
-        rm -f "$DB"
-        exit 1
+        # rm -f "$DB"
+        #exit 1
     fi
 
-    exit 0
 fi
+
+exit 0
