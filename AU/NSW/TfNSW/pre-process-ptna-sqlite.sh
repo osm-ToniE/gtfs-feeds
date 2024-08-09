@@ -19,4 +19,7 @@ then
 
     # delete route_type = 714 == 'Rail Replacement Bus Service'
     sqlite3 $SQ_OPTIONS $DB "DELETE FROM routes WHERE route_type='714';"
+
+    # store this task's information in the 'comment' field of the table 'ptna'
+    sqlite3 $SQ_OPTIONS $DB "UPDATE ptna SET comment='Deleted route_types 205, 712 and 714. See: https://community.openstreetmap.org/t/ptna-news-for-public-transport-network-analysis/8383/145';"
 fi
