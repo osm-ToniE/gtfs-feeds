@@ -4,4 +4,4 @@
 # get URL to download latest GTFS feed
 #
 
-echo "http://web.mta.info/developers/data/nyct/bus/google_transit_brooklyn.zip"
+echo "http://rrgtfsfeeds.s3.amazonaws.com/gtfs_b.zip"
