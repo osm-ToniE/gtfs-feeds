@@ -1,2 +1,2 @@
 id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
-1,"en","Ministry of Transport, Israel","https://mot.gov.il/","","","","","Ministry of Transport","https://mot.gov.il/","","https://gtfs.mot.gov.il/gtfsfiles/israel-public-transportation.zip","","","","",0,0,"","Details, ..."
+1,"en","Ministry of Transport, Israel","https://mot.gov.il/","","","","","Ministry of Transport","https://mot.gov.il/","","https://gtfs.mot.gov.il/gtfsfiles/israel-public-transportation.zip","","","Terms of use","https://www.gov.il/he/pages/gtfs_general_transit_feed_specifications",0,0,"","Details, ..."
