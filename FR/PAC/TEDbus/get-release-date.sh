@@ -8,11 +8,14 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    CONTENT_DISPOSITION=$(curl --connect-timeout 30 -sI $RELEASE_URL | \
+                        fgrep -i 'content-disposition:'              | \
+                        sed -e 's/^content-disposition:.*filename="//i' -e 's/\.zip.*$//' | \
+                        awk -F - '{printf "%s-%s-%s", $3, $2, $1; }')
 
-    if [ -n "$LAST_MODIFIED" ]
+    if [ -n "$CONTENT_DISPOSITION" ]
     then
-        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+        result=$(date -d "$CONTENT_DISPOSITION" '+%Y-%m-%d')
         if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
         then
             RELEASE_DATE=$result
