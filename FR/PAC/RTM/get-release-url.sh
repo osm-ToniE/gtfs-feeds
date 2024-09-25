@@ -4,4 +4,4 @@
 # get URL to download latest GTFS feed
 #
 
-echo "https://tsvc2.pilote3.cityway.fr/api/Export/v1/GetExportedDataFile?ExportFormat=Gtfs&OperatorCode=RTM"
+echo "https://app.mecatran.com/utw/ws/gtfsfeed/static/mamp-rtm?apiKey=16421b08630a7d065c6d250051780f484b673659"
