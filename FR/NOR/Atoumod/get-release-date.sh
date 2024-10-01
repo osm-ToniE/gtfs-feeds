@@ -4,20 +4,20 @@
 # retrieve release date of latest GTFS feed in form "YYYY-MM-DD"
 #
 
-DATASET_ID="5ced52ed8b4c4177b679d377"
+RELEASE_URL=$(./get-release-url.sh)
 
-JSON_URL="https://transport.data.gouv.fr/api/datasets/$DATASET_ID"
-
-UPDATED=$(curl --connect-timeout 30 -s $JSON_URL -o -                                     | \
-        jq -r '.resources[] | select(.format=="GTFS") | (.updated + "_" + .original_url)' | \
-        grep -F 'static'                                                                  | \
-        sort                                                                              | \
-        tail -1                                                                           | \
-        sed -e 's/T.*$//')
-
-if [ $(echo $UPDATED | egrep -c '^20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]$') -eq 1 ]
+if [ -n "$RELEASE_URL" ]
 then
-    RELEASE_DATE=$UPDATED
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+
+    if [ -n "$LAST_MODIFIED" ]
+    then
+        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        then
+            RELEASE_DATE=$result
+        fi
+    fi
 fi
 
 echo $RELEASE_DATE
