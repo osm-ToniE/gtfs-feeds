@@ -14,14 +14,9 @@ LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o - | \
 
 if [ -n "$LOCATION" ]
 then
-    LOCATION=$(curl --connect-timeout 30 -sI $LOCATION | fgrep -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
-
-    if [ -n "$LOCATION" ]
+    if [ "$(echo $LOCATION | grep -c 'nicecotedazur')" == 1 ]
     then
-        if [ "$(echo $LOCATION | grep -c 'nicecotedazur')" == 1 ]
-        then
-            RELEASE_URL=$LOCATION
-        fi
+        RELEASE_URL=$LOCATION
     fi
 fi
 
