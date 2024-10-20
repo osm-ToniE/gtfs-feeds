@@ -1,24 +1,22 @@
 #!/bin/bash
 
 #
-# get URL to download latest GTFS feed
+# retrieve release date of latest GTFS feed in form "YYYY-MM-DD"
 #
 
-BASEURL=https://data.samtrafiken.se/trafiklab/gtfs-sverige-2
-YEAR=$(date +%Y)
-MONTH=$(date +%m)
+RELEASE_URL=$(./get-release-url.sh)
 
-datepart=$(wget -O - $BASEURL/$YEAR/$MONTH/  2>&1                    | \
-           grep 'href="sweden-20[0-9][0-9][0-9][0-9][0-9][0-9].zip"' | \
-           tail -1                                                   | \
-           sed -e 's/^.*href="sweden-//' -e 's/\.zip".*$//')
-
-if [ -n "$datepart" ]
+if [ -n "$RELEASE_URL" ]
 then
-    result=$(date -d "$datepart" '+%Y-%m-%d')
-    if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI --header "Accept-Encoding: gzip" $RELEASE_URL$SE_SAMTRAFIKEN_APIKEY | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+
+    if [ -n "$LAST_MODIFIED" ]
     then
-        RELEASE_DATE=$result
+        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        then
+            RELEASE_DATE=$result
+        fi
     fi
 fi
 
