@@ -1,23 +1,27 @@
 #!/bin/bash
 
 #
-# get URL to download latest GTFS feed
+# retrieve release date of latest GTFS feed in form "YYYY-MM-DD"
 #
 
-DATASET_ID="61a025b3a95e6e49a64ed7a0"
+RELEASE_URL=$(./get-release-url.sh)
 
-JSON_URL="https://transport.data.gouv.fr/api/datasets/$DATASET_ID"
-
-UPDATED=$(curl --connect-timeout 30 -s $JSON_URL -o -                                     | \
-        jq -r '.resources[] | select(.format=="GTFS") | (.updated + "_" + .original_url)' | \
-        grep -F 'static'                                                                  | \
-        sort                                                                              | \
-        tail -1                                                                           | \
-        sed -e 's/T.*$//')
-
-if [ $(echo $UPDATED | egrep -c '^20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]$') -eq 1 ]
+if [ -n "$RELEASE_URL" ]
 then
-    RELEASE_DATE=$UPDATED
+    mkdir tempdir
+
+    wget -q -O tempdir/gtfs.zip $RELEASE_URL
+
+    if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
+    then
+        result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
+        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        then
+            RELEASE_DATE=$result
+
+            mv tempdir $RELEASE_DATE
+        fi
+    fi
 fi
 
 echo $RELEASE_DATE
