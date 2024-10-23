@@ -4,6 +4,6 @@
 # get URL to download latest GTFS feed
 #
 
-PERMALINK="https://opendata.clermontmetropole.eu/explore/dataset/gtfs-smtc/files/718c8a1ba9da6cf70ebb0d44a9b4ab98/download/"
+PERMALINK="https://opendata.clermontmetropole.eu/api/datasets/1.0/gtfs-smtc/attachments/gtfs_t2c_plus_scolaire_zip/"
 
 echo $PERMALINK
