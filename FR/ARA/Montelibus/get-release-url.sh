@@ -4,16 +4,19 @@
 # get URL to download latest GTFS feed
 #
 
-PERMALINK="https://www.data.gouv.fr/fr/datasets/r/3c868712-8920-4ec8-a691-ff6876ecb29e"
+DATASET_ID="6735bd14245d7deda96781d4"
 
-LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | fgrep -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
+JSON_URL="https://transport.data.gouv.fr/api/datasets/$DATASET_ID"
+
+LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o -                                     | \
+         jq -r '.resources[] | select(.format=="GTFS") | (.updated + "_" + .original_url)' | \
+         sort                                                                              | \
+         tail -1                                                                           | \
+         sed -e 's/^.*Z_http/http/')
 
 if [ -n "$LOCATION" ]
 then
-    if [ "$(echo $LOCATION | grep -c 'gtfs.zip')" == 1 ]
-    then
-        RELEASE_URL=$LOCATION
-    fi
+    RELEASE_URL=$LOCATION
 fi
 
 echo $RELEASE_URL
