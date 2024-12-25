@@ -1,2 +1,2 @@
 id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
-1,,"L'Agglo en bus","","FR-PAC-L-Agglo-en-bus",0,"",0,FR-PAC-L-Agglo-en-bus
+1,,"L'Agglo en bus","","FR-PAC-L-Agglo-en-bus",0,"",0,
