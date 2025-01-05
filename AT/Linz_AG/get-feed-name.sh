@@ -4,4 +4,4 @@
 # print name of GTFS feed in PTNA
 #
 
-echo "AT-Linz-AG"
+echo "AT-Linz_AG"
