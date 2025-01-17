@@ -14,6 +14,8 @@ then
     then
         RELEASE_URL=$LOCATION
     fi
+else
+    curl --connect-timeout 30 -sI $PERMALINK | grep -i '^HTTP/' > ./release_date_error.log
 fi
 
 echo $RELEASE_URL

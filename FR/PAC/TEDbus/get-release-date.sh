@@ -15,11 +15,15 @@ then
 
     if [ -n "$CONTENT_DISPOSITION" ]
     then
-        result=$(date -d "$CONTENT_DISPOSITION" '+%Y-%m-%d')
+        result=$(date -d "$CONTENT_DISPOSITION" '+%Y-%m-%d' 2> ./release_date_error.log)
         if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
         then
             RELEASE_DATE=$result
+        else
+            echo "$CONTENT_DISPOSITION" > ./release_date_error.log
         fi
+    else
+        curl --connect-timeout 30 -sI $RELEASE_URL | grep -i '^HTTP/' > ./release_date_error.log
     fi
 fi
 
