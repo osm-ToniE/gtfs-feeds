@@ -8,15 +8,15 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    tempdir=$(mktemp -d gtfsXXX)
+    tempdir=$(mktemp -d CLgtfsXXX)
 
     cd $tempdir
 
-    tempfile=$(mktemp gtfsXXX.zip)
+    tempfile=$(mktemp CLgtfsXXX.zip)
 
     wget --no-verbose --user-agent "PTNA script on https://ptna.openstreetmap.de" -O $tempfile "$RELEASE_URL"
 
-    unzip -o -- $tempfile
+    unzip -o -- $tempfile 1>&2
 
     cd ..
 
