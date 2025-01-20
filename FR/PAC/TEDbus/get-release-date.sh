@@ -10,7 +10,7 @@ if [ -n "$RELEASE_URL" ]
 then
     CONTENT_DISPOSITION=$(curl --connect-timeout 30 -sI $RELEASE_URL | \
                         fgrep -i 'content-disposition:'              | \
-                        sed -e 's/^content-disposition:.*filename="//i' -e 's/\.zip.*$//' | \
+                        sed -e 's/^content-disposition:.*filename="//i' -e 's/[0-9][0-9]\.zip.*$//' | \
                         awk -F - '{printf "%s-%s-%s", $3, $2, $1; }')
 
     if [ -n "$CONTENT_DISPOSITION" ]
