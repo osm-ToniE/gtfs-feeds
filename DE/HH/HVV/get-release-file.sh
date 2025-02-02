@@ -8,5 +8,5 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    wget --no-check-certificate -O - "$RELEASE_URL"
+    wget --no-verbose --no-check-certificate -O - "$RELEASE_URL"
 fi

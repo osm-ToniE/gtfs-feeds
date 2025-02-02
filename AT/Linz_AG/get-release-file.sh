@@ -18,7 +18,7 @@ then
 
     if [ "$(echo $year | grep -c '^20[0-9][0-9]$')" == 1 ]
     then
-        echo $(date "+%Y-%m-%d %H:%M:%S %Z") "download_dataset token $dsid $year"
+        echo $(date "+%Y-%m-%d %H:%M:%S %Z") "download_dataset token $dsid $year" >> /dev/stderr
         download_dataset $token $dsid $year
     else
         echo "$PWD: could not get correct information for 'year' ($year)" >> /dev/stderr
