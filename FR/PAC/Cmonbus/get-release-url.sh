@@ -21,6 +21,8 @@ then
     if [ -n "$LOCATION" ]
     then
         RELEASE_URL=${ORIGINAL_URL%%.fr/*}.fr/$LOCATION
+    else
+        RELEASE_URL=$ORIGINAL_URL
     fi
 fi
 
