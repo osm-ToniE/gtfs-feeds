@@ -17,6 +17,8 @@ then
         then
             RELEASE_DATE=$result
         fi
+    else
+        curl --connect-timeout 30 -sI -v $RELEASE_URL 2>&1 | grep -E -i 'HTTP|SSL certificate problem/' > ./release_date_error.log
     fi
 fi
 
