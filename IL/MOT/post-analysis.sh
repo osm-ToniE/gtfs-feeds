@@ -11,20 +11,20 @@ error_code=0
 if [ -f "agency.txt" -a -f "routes.txt" -a -f "trips.txt" -a -f "stops.txt" -a -f "stop_times.txt" ]
 then
     ptna_networks="IL-D-Ashkelon            \
-                IL-D-Beersheba           \
-                IL-HA-Hadera             \
-                IL-HA-Haifa              \
-                IL-JM-Jerusalem          \
-                IL-M-haSharon            \
-                IL-M-Petah_Tikva         \
-                IL-M-Ramala              \
-                IL-M-Rehovot             \
-                IL-TA-Tel-Aviv           \
-                IL-Z-Acre                \
-                IL-Z-Golan               \
-                IL-Z-Jezreel             \
-                IL-Z-Kinneret            \
-                IL-Z-Safed"
+                   IL-D-Beersheba           \
+                   IL-HA-Hadera             \
+                   IL-HA-Haifa              \
+                   IL-JM-Jerusalem          \
+                   IL-M-haSharon            \
+                   IL-M-Petah_Tikva         \
+                   IL-M-Ramala              \
+                   IL-M-Rehovot             \
+                   IL-TA-Tel-Aviv           \
+                   IL-Z-Acre                \
+                   IL-Z-Golan               \
+                   IL-Z-Jezreel             \
+                   IL-Z-Kinneret            \
+                   IL-Z-Safed"
 
     for network in $ptna_networks
     do
@@ -48,9 +48,13 @@ then
 
                     if [ $ret_code -eq 0 -a -f "./$network-catalog.json" -a -s "./$network-catalog.json" ]
                     then
-                        log=$(ptna-wiki-page.pl --pull --page=$WIKI_ROUTES_PAGE --file=./$network-Wiki-Routes-Page-old.txt 2>&1)
+                        echo $(date "+%Y-%m-%d %H:%M:%S %Z") "reading OSM Wiki page '$WIKI_ROUTES_PAGE'"
+
+                        log="$(ptna-wiki-page.pl --pull --page=$WIKI_ROUTES_PAGE --file=./$network-Wiki-Routes-Page-old.txt 2>&1)"
                         ret_code=$?
                         error_code=$(( $error_code + $ret_code ))
+
+                        echo $log | sed -e 's/ \([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] \)/\n\1/g'
 
                         if [ $ret_code -eq 0 -a -f "./$network-Wiki-Routes-Page-old.txt" ]
                         then
@@ -73,14 +77,13 @@ then
                                 echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Error: OSM Wiki page '$WIKI_ROUTES_PAGE' includes a '#REDIRECT ...'"
                             fi
                         else
-                            echo $log | sed -e 's/ \([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] \)/\n\1/g'
                             echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Error: reading OSM Wiki page '$WIKI_ROUTES_PAGE' failed with code: '$ret_code'"
                         fi
                     else
                         echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Error: creating '$network-catalog.json' failed with code: '$ret_code'"
                     fi
                 else
-                    echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Error: '$network' does not have routes data on the OSM Wiki"
+                    echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Note: '$network' does not have routes data in the OSM Wiki"
                 fi
             else
                 if [ ! -f "$network_dir/settings.sh" ]
