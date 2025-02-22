@@ -8,7 +8,7 @@ gtfs_feed=$(../get-feed-name.sh)
 
 error_code=0
 
-wiki_routes_files="$(find . -type f -name '*-Wiki-Routes-Page.txt')"
+wiki_routes_files=$(find . -type f -name '*-Wiki-Routes-Page.txt')
 
 if [ -n "$wiki_routes_files" ]
 then
@@ -22,7 +22,7 @@ then
         then
             network=${wiki_file%%-Wiki-Routes-Page.txt}
 
-            network_dir="$(find $PTNA_NETWORKS_LOC -type d -name $network)"
+            network_dir=$(find $PTNA_NETWORKS_LOC -type d -name $network)
 
             if [ -f "$network_dir/settings.sh" ]
             then
@@ -38,7 +38,7 @@ then
                     then
                         diff_file=${wiki_file%%.txt}.diff
                         diff $old_file $wiki_file > $diff_file
-                        diff_size="$(stat -c '%s' $diff_file)"
+                        diff_size=$(stat -c '%s' $diff_file)
                     fi
 
                     if [ $diff_size -ne 0 ]
