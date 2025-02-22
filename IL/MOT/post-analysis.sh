@@ -50,7 +50,7 @@ then
                     then
                         echo $(date "+%Y-%m-%d %H:%M:%S %Z") "reading OSM Wiki page '$WIKI_ROUTES_PAGE'"
 
-                        log="$(ptna-wiki-page.pl --pull --page=$WIKI_ROUTES_PAGE --file=./$network-Wiki-Routes-Page-old.txt 2>&1)"
+                        log=$(ptna-wiki-page.pl --pull --page=$WIKI_ROUTES_PAGE --file=./$network-Wiki-Routes-Page-old.txt 2>&1)
                         ret_code=$?
                         error_code=$(( $error_code + $ret_code ))
 

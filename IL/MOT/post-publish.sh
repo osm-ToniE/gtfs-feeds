@@ -53,7 +53,7 @@ then
                             echo $(date "+%Y-%m-%d %H:%M:%S %Z") "writing '$wiki_file' to OSM Wiki page difference (bytes: $diff_size)"
                         fi
 
-                        log="$(ptna-wiki-page.pl --push --page=$WIKI_ROUTES_PAGE --file=./$network-Wiki-Routes-Page.txt --summary='Update by PTNA during import of GTFS feed: $gtfs_feed' 2>&1)"
+                        log=$(ptna-wiki-page.pl --push --page=$WIKI_ROUTES_PAGE --file=./$network-Wiki-Routes-Page.txt --summary="Update by PTNA during import of GTFS feed: $gtfs_feed" 2>&1)
                         ret_code=$?
 
                         echo $log | sed -e 's/ \([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] \)/\n\1/g'
