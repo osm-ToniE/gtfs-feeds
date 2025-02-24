@@ -33,10 +33,10 @@ then
                     echo $(date "+%Y-%m-%d %H:%M:%S %Z") "processing OSM wiki file for network '$network'"
 
                     diff_size=-1
-                    old_file=${wiki_file%%.txt}-old.txt
+                    old_file=${wiki_file%.txt}-old.txt
                     if [ -f "$old_file" -a -s "$old_file" ]
                     then
-                        diff_file=${wiki_file%%.txt}.diff
+                        diff_file=${wiki_file%.txt}.diff
                         diff $old_file $wiki_file > $diff_file
                         diff_size=$(stat -c '%s' $diff_file)
                     fi
@@ -71,6 +71,13 @@ then
                             echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Note: '$wiki_file': there is no difference to current contents"
                         fi
                     fi
+
+                    # publish Catalog file to work area for later use
+                    catalog_file="$network-catalog.json"
+                    details_file=$(find $PTNA_WORK_LOC -type f -name "$network-Analysis-details.txt")
+                    work_dir=${details_file%/*}
+                    cp $catalog_file $work_dir
+
                 else
                     echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Note: '$network' does not have routes data on the OSM Wiki"
                 fi
