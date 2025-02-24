@@ -10,7 +10,8 @@ error_code=0
 
 if [ -f "agency.txt" -a -f "routes.txt" -a -f "trips.txt" -a -f "stops.txt" -a -f "stop_times.txt" ]
 then
-    ptna_networks="IL-D-Ashkelon            \
+    ptna_networks="IL-Train                 \
+                   IL-D-Ashkelon            \
                    IL-D-Beersheba           \
                    IL-HA-Hadera             \
                    IL-HA-Haifa              \
