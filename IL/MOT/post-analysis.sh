@@ -15,9 +15,9 @@ then
                    IL-HA-Hadera             \
                    IL-HA-Haifa              \
                    IL-JM-Jerusalem          \
-                   IL-M-haSharon            \
+                   IL-M-HaSharon            \
                    IL-M-Petah_Tikva         \
-                   IL-M-Ramala              \
+                   IL-M-Ramla               \
                    IL-M-Rehovot             \
                    IL-TA-Tel-Aviv           \
                    IL-Z-Acre                \
