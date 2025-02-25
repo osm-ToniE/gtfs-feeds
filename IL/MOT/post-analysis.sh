@@ -43,8 +43,14 @@ then
                 then
                     echo $(date "+%Y-%m-%d %H:%M:%S %Z") "processing 'israelGtfsRoutesInShape.py --shape $network_dir/$network.geojson --gtfsdir . --outfile ./$network-catalog.json'"
 
-                    israelGtfsRoutesInShape.py --shape $network_dir/$network.geojson --gtfsdir $PWD --outfile ./$network-catalog.json
-                    ret_code=$?
+                    if [ "$network" == "IL-Train" ]
+                    then
+                        israelGtfsRoutesInShape.py --trains --gtfsdir $PWD --outfile ./$network-catalog.json
+                        ret_code=$?
+                    else
+                        israelGtfsRoutesInShape.py --shape $network_dir/$network.geojson --gtfsdir $PWD --outfile ./$network-catalog.json
+                        ret_code=$?
+                    fi
                     error_code=$(( $error_code + $ret_code ))
 
                     if [ $ret_code -eq 0 -a -f "./$network-catalog.json" -a -s "./$network-catalog.json" ]
