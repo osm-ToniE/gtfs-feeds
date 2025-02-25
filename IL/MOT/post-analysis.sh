@@ -35,7 +35,7 @@ then
 
         if [ -n "$network_dir" ]
         then
-            if [ -f "$network_dir/settings.sh" -a -f "$network_dir/$network.geojson" ]
+            if [ -f "$network_dir/settings.sh" ]
             then
                 source "$network_dir/settings.sh"
 
@@ -47,13 +47,20 @@ then
                     then
                         israelGtfsRoutesInShape.py --trains --gtfsdir $PWD --outfile ./$network-catalog.json
                         ret_code=$?
+                        error_code=$(( $error_code + $ret_code ))
                     else
-                        israelGtfsRoutesInShape.py --shape $network_dir/$network.geojson --gtfsdir $PWD --outfile ./$network-catalog.json
-                        ret_code=$?
+                        if [ -f "$network_dir/$network.geojson" ]
+                        then
+                            israelGtfsRoutesInShape.py --shape $network_dir/$network.geojson --gtfsdir $PWD --outfile ./$network-catalog.json
+                            ret_code=$?
+                            error_code=$(( $error_code + $ret_code ))
+                        else
+                            echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Error: '$network.geojson' file for '$network' not found"
+                            error_code=$(( $error_code + 1 ))
+                        fi
                     fi
-                    error_code=$(( $error_code + $ret_code ))
 
-                    if [ $ret_code -eq 0 -a -f "./$network-catalog.json" -a -s "./$network-catalog.json" ]
+                    if [ $error_code -eq 0 -a -f "./$network-catalog.json" -a -s "./$network-catalog.json" ]
                     then
                         echo $(date "+%Y-%m-%d %H:%M:%S %Z") "reading OSM Wiki page '$WIKI_ROUTES_PAGE'"
 
@@ -63,7 +70,7 @@ then
 
                         echo $log | sed -e 's/ \([0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] \)/\n\1/g'
 
-                        if [ $ret_code -eq 0 -a -f "./$network-Wiki-Routes-Page-old.txt" ]
+                        if [ $error_code -eq 0 -a -f "./$network-Wiki-Routes-Page-old.txt" ]
                         then
                             if [ $(grep -c '#REDIRECT *\[\[' ./$network-Wiki-Routes-Page-old.txt) -eq 0 ]
                             then
@@ -96,11 +103,6 @@ then
                 if [ ! -f "$network_dir/settings.sh" ]
                 then
                     echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Error: 'settings.sh' file for '$network' not found"
-                    error_code=$(( $error_code + 1 ))
-                fi
-                if [ ! -f "$network_dir/$network.geojson" ]
-                then
-                    echo $(date "+%Y-%m-%d %H:%M:%S %Z") "Error: '$network.geojson' file for '$network' not found"
                     error_code=$(( $error_code + 1 ))
                 fi
             fi
