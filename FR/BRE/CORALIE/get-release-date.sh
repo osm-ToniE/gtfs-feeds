@@ -19,6 +19,11 @@ then
         fi
     else
         curl --connect-timeout 30 -sI -v $RELEASE_URL 2>&1 | grep -E '(^HTTP/)|(SSL certificate problem)' > ./release_date_error.log
+
+        if [ ! -s ./release_date_error.log ]
+        then
+            echo "Connection denied by Geolocation Setting. Reason: Blocked country: Finland" > ./release_date_error.log
+        fi
     fi
 fi
 
