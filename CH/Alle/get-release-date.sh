@@ -18,7 +18,7 @@ then
             RELEASE_DATE=$result
         fi
     else
-        echo "Data is protected by CloudFlare - no access"
+        echo "Data is protected by CloudFlare - no access" > ./release_date_error.log
     fi
 fi
 
