@@ -17,6 +17,8 @@ then
         then
             RELEASE_DATE=$result
         fi
+    else
+        echo "Data is protected by CloudFlare - no access"
     fi
 fi
 
