@@ -15,7 +15,21 @@ LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o -                  | \
 
 if [ -n "$LOCATION" ]
 then
-    RELEASE_URL=$LOCATION
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $LOCATION | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+
+    if [ -n "$LAST_MODIFIED" ]
+    then
+        RELEASE_URL=$LOCATION
+    else
+        LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o -                             | \
+                 jq -r '.history[] | .payload | select(.format=="GTFS") | .permanent_url'  | \
+                 sort                                                                      | \
+                 tail -1)
+        if [ -n "$LOCATION" ]
+        then
+            RELEASE_URL=$LOCATION
+        fi
+    fi
 fi
 
 echo $RELEASE_URL
