@@ -2,7 +2,7 @@
 
 DB="ptna-gtfs-sqlite.db"
 
-SQ_OPTIONS="-init /dev/null"
+SQ_OPTIONS="-init /dev/null -batch -echo"
 
 if [ -f "$DB" ]
 then
