@@ -12,7 +12,7 @@ then
 
     if [ -n "$LAST_MODIFIED" ]
     then
-        if [ $(echo $LAST_MODIFIED |fgrep -c 'HTTP/2 200') -eq 1 ]
+        if [ $(echo $LAST_MODIFIED |grep -F -c 'HTTP/2 200') -eq 1 ]
         then
             LAST_MODIFIED=$(echo $LAST_MODIFIED | sed -e 's/.*last-modified:\s*//i')
             result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')

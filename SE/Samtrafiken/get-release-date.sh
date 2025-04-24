@@ -8,7 +8,7 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    LAST_MODIFIED=$(curl --connect-timeout 30 -sI --header "Accept-Encoding: gzip" $RELEASE_URL$SE_SAMTRAFIKEN_APIKEY | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI --header "Accept-Encoding: gzip" $RELEASE_URL$SE_SAMTRAFIKEN_APIKEY | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
 
     if [ -n "$LAST_MODIFIED" ]
     then

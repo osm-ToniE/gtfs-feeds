@@ -16,7 +16,7 @@ ORIGINAL_URL=$(curl --connect-timeout 30 -s $JSON_URL -o -                      
 
 if [ -n "$ORIGINAL_URL" ]
 then
-    LOCATION=$(curl --connect-timeout 30 -sI $ORIGINAL_URL | fgrep -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
+    LOCATION=$(curl --connect-timeout 30 -sI $ORIGINAL_URL | grep -F -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
 
     if [ -n "$LOCATION" ]
     then

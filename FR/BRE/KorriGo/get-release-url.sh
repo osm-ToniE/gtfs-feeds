@@ -16,7 +16,7 @@ LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o -                          
 
 if [ -n "$LOCATION" ]
 then
-    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $LOCATION | fgrep -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $LOCATION | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
 
     if [ -n "$LAST_MODIFIED" ]
     then

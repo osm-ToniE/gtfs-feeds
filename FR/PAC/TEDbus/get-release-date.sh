@@ -9,7 +9,7 @@ RELEASE_URL=$(./get-release-url.sh)
 if [ -n "$RELEASE_URL" ]
 then
     CONTENT_DISPOSITION=$(curl --connect-timeout 30 -sI $RELEASE_URL                                     | \
-                        fgrep -i 'content-disposition:'                                                  | \
+                        grep -F -i 'content-disposition:'                                                  | \
                         sed -e 's/^content-disposition:.*filename="//i'                                    \
                             -e 's/\([0-9][0-9]\)-\([0-9][0-9]\)-\([0-9][0-9][0-9][0-9]\).*$/\3-\2-\1/')
 

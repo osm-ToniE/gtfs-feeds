@@ -6,7 +6,7 @@
 
 PERMALINK="https://data.gov.rs/sr/datasets/r/b9c72d16-6c2c-46f8-8490-78a6ceefb8d8"
 
-LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | fgrep -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
+LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | grep -F -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
 
 if [ -n "$LOCATION" ]
 then

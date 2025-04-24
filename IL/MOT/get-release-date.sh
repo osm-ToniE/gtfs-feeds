@@ -12,7 +12,7 @@ then
     RELEASE_FILE=${RELEASE_URL##*/}
     LAST_MODIFIED=$(wget --no-check-certificate -O - $RELEASE_DIR 2>&1  | \
                     sed -e 's/<br>/\n/ig'                                   | \
-                    fgrep "$RELEASE_FILE"                                   | \
+                    grep -F "$RELEASE_FILE"                                   | \
                     sed -e 's/^\s*//' -e 's/\s.*$//')
 
     if [ -n "$LAST_MODIFIED" ]
