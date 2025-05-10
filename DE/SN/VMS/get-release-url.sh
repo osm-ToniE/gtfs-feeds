@@ -6,7 +6,9 @@
 
 SCANURL="https://www.vms.de/vms/service/downloads/"
 
-LOCATION=$(curl --connect-timeout 30 -s $SCANURL -o - | egrep -i 'href="https://www.vms.de/wp-content/uploads/.*/GTFS_VMS_[0-9][0-9][0-9][0-9].[0-9][0-9].[0-9][0-9].*?\.zip"' | tail -1 | sed -e 's/^.*href="//i' -e 's/\.zip.*$/.zip/')
+# https://www.vms.de/wp-content/uploads/2025/04/GTFS_VMS.zip
+
+LOCATION=$(curl --connect-timeout 30 -s $SCANURL -o - | grep -E -i 'href="https://www.vms.de/wp-content/uploads/.*?/GTFS_VMS.*?\.zip"' | tail -1 | sed -e 's/^.*href="//i' -e 's/\.zip.*$/.zip/')
 
 if [ -n "$LOCATION" ]
 then

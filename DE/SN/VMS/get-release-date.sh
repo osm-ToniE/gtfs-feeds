@@ -1,16 +1,23 @@
 #!/bin/bash
 
 #
-# get URL to download latest GTFS feed
+# retrieve release date of latest GTFS feed in form "YYYY-MM-DD"
 #
 
-SCANURL="https://www.vms.de/vms/service/downloads/"
+RELEASE_URL=$(./get-release-url.sh)
 
-SCANDATE=$(curl --connect-timeout 30 -s $SCANURL -o - | egrep -i 'href="https://www.vms.de/wp-content/uploads/.*/GTFS_VMS_[0-9][0-9][0-9][0-9].[0-9][0-9].[0-9][0-9].*?\.zip"' | tail -1 | sed -e 's/^.*GTFS_VMS_//i' -e 's/\.zip.*$//' -e 's/-.$//' -e 's/[^0-9]/-/g')
-
-if [ -n "$SCANDATE" ]
+if [ -n "$RELEASE_URL" ]
 then
-    RELEASE_DATE=$SCANDATE
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+
+    if [ -n "$LAST_MODIFIED" ]
+    then
+        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        then
+            RELEASE_DATE=$result
+        fi
+    fi
 fi
 
 echo $RELEASE_DATE
