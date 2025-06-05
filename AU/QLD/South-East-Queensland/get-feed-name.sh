@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "AU-QD-South-East-Queensland"
+echo "AU-QLD-South-East-Queensland"
