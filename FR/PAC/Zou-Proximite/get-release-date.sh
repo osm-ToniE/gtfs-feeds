@@ -14,12 +14,17 @@ then
 
     if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
     then
-        result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
-        if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+        if [ $(file tempdir/gtfs.zip | grep -c -F 'HTML') -gt 0 ]
         then
-            RELEASE_DATE=$result
+            grep -E '^<[hH][1-9]' tempdir/gtfs.zip | sed -e 's/^<h[1-9]>//i' -e 's|</h[1-9]>$||' -e 's/<p>.*$//' | grep -v -E '^$' > ./release_date_error.log
+        else
+            result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
+            if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
+            then
+                RELEASE_DATE=$result
 
-            mv tempdir $RELEASE_DATE
+                mv tempdir $RELEASE_DATE
+            fi
         fi
     fi
 fi
