@@ -1,0 +1,1 @@
+../DTP-1/get-release-date.sh
