@@ -17,6 +17,8 @@ then
         then
             RELEASE_DATE=$result
         fi
+    else
+        curl --connect-timeout 30 -sI $RELEASE_URL | grep -i '^HTTP/' > ./release_date_error.log
     fi
 fi
 
