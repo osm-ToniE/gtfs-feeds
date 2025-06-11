@@ -7,4 +7,17 @@
 # this is a ZIP file which contans 8 gtfs.zip files
 # for get-release-date.sh this is OK
 
-echo "https://opendata.transport.vic.gov.au/dataset/3f4e292e-7f8a-4ffe-831f-1953be0fe448/resource/17c67388-9bfa-4901-9366-d59d6d06b4e1/download/gtfs.zip"
+SCANURL="https://opendata.transport.vic.gov.au/dataset/gtfs-schedule"
+
+LOCATION=$(curl -s $SCANURL -o - | \
+            grep -i -E 'href="https://opendata\.transport\.vic\.gov\.au/dataset/.*/resource/.*/download/gtfs\.zip"' | \
+            head -1               | \
+            sed -e 's/^.*href="//i' \
+                -e 's/".*$//')
+
+if [ -n "$LOCATION" ]
+then
+    RELEASE_URL="$LOCATION"
+fi
+
+echo $RELEASE_URL
