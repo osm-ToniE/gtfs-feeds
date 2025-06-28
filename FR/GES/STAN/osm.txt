@@ -1,0 +1,2 @@
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
+1,,"Service de transport de l'agglomération nancéienne","STAN","FR-GES-STAN",0,"",0,FR-GES-STAN
