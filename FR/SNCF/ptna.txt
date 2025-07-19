@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"fr","SNCF Voyageurs","https://www.sncf-voyageurs.com/","","","","","SNCF Voyageurs","https://ressources.data.sncf.com/explore/dataset/horaires-sncf/","","https://eu.ftp.opendatasoft.com/sncf/plandata/export-opendata-sncf-gtfs.zip","ODBL","https://data.sncf.com/pages/cgu/A1","","",0,0,"","Details ..."
