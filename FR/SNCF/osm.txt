@@ -1,2 +1,2 @@
 id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
-1,"","","","",1,"^[^\.]+\.[^\.]+\.([^\.]+\.[^\.]+\.[^\.]+)$",1,FR-SNCF
+1,"Société nationale des chemins de fer français","SNCF","FR-SNCF","",1,"",0,FR-SNCF
