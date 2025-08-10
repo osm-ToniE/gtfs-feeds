@@ -9,7 +9,7 @@
 #SCANURL="${BASEURL}/gtfs2"
 
 #LOCATION=$(curl --connect-timeout 30 -s $SCANURL -o - |
-#           egrep -i 'href="https://www.zet.hr/UserDocsImages/Dokumenti i obrasci za preuzimanje/(GTFS.*[0-9]+\.[0-9]+\.[0-9][0-9][0-9][0-9]\..*|scheduled-.*?)\.zip' | \
+#           grep -E -i 'href="https://www.zet.hr/UserDocsImages/Dokumenti i obrasci za preuzimanje/(GTFS.*[0-9]+\.[0-9]+\.[0-9][0-9][0-9][0-9]\..*|scheduled-.*?)\.zip' | \
 #           head -1 | \
 #           sed -e 's/^.*href="https:/https:/i' \
 #               -e 's/".*$//'                   \
@@ -17,7 +17,7 @@
 
 #LOCATION=$(curl --connect-timeout 30 -s $SCANURL -o - | \
 #           sed -e 's/<\/a>/<\/a>\n/g' -e 's/<a>/<a>\n/g'  | \
-#           egrep -i 'href="/gtfs-scheduled/scheduled-.*?\.zip">GTFS Static Data Latest' | \
+#           grep -E -i 'href="/gtfs-scheduled/scheduled-.*?\.zip">GTFS Static Data Latest' | \
 #           head -1               | \
 #           sed -e 's/^.*href="//i' \
 #               -e 's/".*$//'       \
