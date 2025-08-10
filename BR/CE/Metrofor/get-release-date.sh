@@ -8,17 +8,19 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    mkdir tempdir
 
-    if [ -n "$LAST_MODIFIED" ]
+    wget -q -O tempdir/gtfs.zip $RELEASE_URL
+
+    if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
     then
-        result=$(date -d "$LAST_MODIFIED" '+%Y-%m-%d')
+        result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
         if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
         then
             RELEASE_DATE=$result
+
+            mv tempdir $RELEASE_DATE
         fi
-    else
-        curl --connect-timeout 30 -sI $RELEASE_URL | grep -i '^HTTP/' > ./release_date_error.log
     fi
 fi
 
