@@ -10,7 +10,7 @@ if [ -n "$RELEASE_URL" ]
 then
     mkdir tempdir
 
-    wget -q -O tempdir/gtfs.zip --user-agent="PTNA @ ptna.openstreetmap.de" $RELEASE_URL
+    wget -q --read-timeout=30 -O tempdir/gtfs.zip --user-agent="PTNA @ ptna.openstreetmap.de" $RELEASE_URL
 
     if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
     then
