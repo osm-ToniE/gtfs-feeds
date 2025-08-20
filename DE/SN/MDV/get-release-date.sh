@@ -24,7 +24,7 @@ then
             mv tempdir $RELEASE_DATE
         fi
     else
-        if $ret_code != 0 ]
+        if [ $ret_code != 0 ]
         then
             if [ $ret_code == 28 ]
             then
