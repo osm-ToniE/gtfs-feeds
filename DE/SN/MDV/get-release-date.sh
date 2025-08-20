@@ -10,9 +10,11 @@ if [ -n "$RELEASE_URL" ]
 then
     mkdir tempdir
 
-    wget -q --read-timeout=30 -O tempdir/gtfs.zip --user-agent="PTNA @ ptna.openstreetmap.de" $RELEASE_URL
+    curl -s --user-agent "PTNA @ ptna.openstreetmap.de" -o tempdir/gtfs.zip $RELEASE_URL
 
-    if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
+    ret_code=$?
+
+    if [ $ret_code == 0 -a -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
     then
         result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
         if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
@@ -20,6 +22,16 @@ then
             RELEASE_DATE=$result
 
             mv tempdir $RELEASE_DATE
+        fi
+    else
+        if $ret_code != 0 ]
+        then
+            if [ $ret_code == 28 ]
+            then
+                echo "curl returned '$ret_code' - timeout" > ./release_date_error.log
+            else
+                echo "curl returned '$ret_code'" > ./release_date_error.log
+            fi
         fi
     fi
 fi
