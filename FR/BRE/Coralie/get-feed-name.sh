@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "FR-BRE-CORALIE"
+echo "FR-BRE-Coralie"
