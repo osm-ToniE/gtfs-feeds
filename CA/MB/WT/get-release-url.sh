@@ -4,4 +4,4 @@
 # get URL to download latest GTFS feed
 #
 
-echo "http://gtfs.winnipegtransit.com/google_transit.zip"
+echo "https://gtfs.winnipegtransit.com/google_transit.zip"
