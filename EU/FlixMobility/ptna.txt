@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"en","FlixMobility Tech GmbH",https://global.flixbus.com/,"","","","","FlixMobility Tech GmbH",https://global.flixbus.com/,"","https://gtfs.gis.flix.tech/gtfs_generic_eu.zip","","","Open Data Commons Open Database License (ODbL) - ODbL-1.0","https://opendatacommons.org/licenses/odbl/",0,0,"","Details, ..."
