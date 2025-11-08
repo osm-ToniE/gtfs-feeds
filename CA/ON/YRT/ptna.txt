@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"en","York Region Transit","https://www.yrt.ca/","","","","","York Region Transit","https://www.yrt.ca/","","https://www.yrt.ca/google/google_transit.zip","","","Open Data Licence Agreement","https://www.yrt.ca/en/about-us/open-data-licence-agreement.aspx",0,0,"","Details, ..."
