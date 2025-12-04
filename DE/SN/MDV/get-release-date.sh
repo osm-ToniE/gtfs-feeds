@@ -29,6 +29,9 @@ then
             if [ $ret_code == 28 ]
             then
                 echo "curl returned '$ret_code' - timeout" > ./release_date_error.log
+            elif [ %ret_code == 35 ]
+            then
+                echo "curl returned '$ret_code' - SSL connect error. The SSL handshaking failed" > ./release_date_error.log
             else
                 echo "curl returned '$ret_code'" > ./release_date_error.log
             fi
