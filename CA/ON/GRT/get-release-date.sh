@@ -18,7 +18,7 @@ then
             RELEASE_DATE=$result
         fi
     else
-        curl --connect-timeout 30 -sI -v $RELEASE_URL 2>&1 | grep -E '(^HTTP/)|(SSL certificate problem)|(TLS connect error)' > ./release_date_error.log
+        curl --connect-timeout 30 -sI -v $RELEASE_URL 2>&1 | grep -E '(^HTTP/)|(SSL certificate problem)|(key too small)' > ./release_date_error.log
 
         if [ -s ./release_date_error.log ]
         then
