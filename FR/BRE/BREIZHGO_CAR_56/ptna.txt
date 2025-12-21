@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details,list_separator
+1,"fr","BreizhGo Car en Morbihan","https://www.korrigo.bzh/","","","","","KorriGo","https://www.korrigo.bzh/",""," https://www.korrigo.bzh/ftp/OPENDATA/BREIZHGO_CAR_56.gtfs.zip","Source : Région Bretagne","","odc-odbl","https://opendatacommons.org/licenses/odbl/1.0/",0,0,"","Details, ...",";"
