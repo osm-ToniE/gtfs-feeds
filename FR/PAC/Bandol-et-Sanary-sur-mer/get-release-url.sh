@@ -4,7 +4,7 @@
 # get URL to download latest GTFS feed
 #
 
-PERMALINK="https://www.data.gouv.fr/fr/datasets/r/358ab51c-78e8-45a4-ae5a-a05722af6c09"
+PERMALINK="https://www.data.gouv.fr/api/1/datasets/r/358ab51c-78e8-45a4-ae5a-a05722af6c09"
 
 LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | grep -F -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
 
