@@ -14,7 +14,7 @@ then
 
     if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
     then
-        result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
+        result=$(unzip -l tempdir/gtfs.zip 2> ./release_date_error.log | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
         if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
         then
             RELEASE_DATE=$result
