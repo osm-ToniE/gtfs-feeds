@@ -20,6 +20,12 @@ then
             RELEASE_DATE=$result
 
             mv tempdir $RELEASE_DATE
+        else
+            if [ $(grep -c -i 'cannot find zipfile directory' ./release_date_error.log) -eq 1 ]
+            then
+                echo "Not a ZIP file" > ./release_date_error.log
+            fi
+            rm -rf tempdir
         fi
     fi
 fi
