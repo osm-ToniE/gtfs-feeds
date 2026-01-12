@@ -16,7 +16,7 @@ then
     then
         if [ $(file tempdir/gtfs.zip | grep -c -F 'HTML') -gt 0 ]
         then
-            grep -E '^<[hH][1-9]' tempdir/gtfs.zip | sed -e 's/^<h[1-9]>//i' -e 's|</h[1-9]>$||' -e 's/<p>.*$//' | grep -v -E '^$' > ./release_date_error.log
+            grep -E -i '<h[1-9]' tempdir/gtfs.zip 2> /dev/null | sed -e 's/^.*<h[1-9]>//i' -e 's|</h[1-9]>.*$||' -e 's/<p>.*$//' | grep -v -E '^$' > ./release_date_error.log
         else
             result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
             if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
