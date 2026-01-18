@@ -8,7 +8,7 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | grep -E -i '^(HTTP/. 404|last-modified:)')
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | grep -E -i '^(HTTP/. [1-9][0-9][0-9]|last-modified:)')
 
     if [ -n "$LAST_MODIFIED" ]
     then
