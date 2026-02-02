@@ -10,7 +10,7 @@ then
 
     S7COUNT=$(sqlite3 $SQ_OPTIONS $DB "SELECT COUNT(route_id) FROM routes WHERE route_long_name='S7' AND route_short_name='M07';")
 
-    if [ "$S7COUNT" -ne "1" ]
+    if [ "$S7COUNT" != "1" ]
     then
         echo "**********************************"
         echo
