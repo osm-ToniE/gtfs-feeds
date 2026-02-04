@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details,list_separator
+1,"fr","MOVA","https://www.mova.bzh/","","","","","KEOLIS_ARMOR","https://www.mova.bzh/","","https://www.data.gouv.fr/api/1/datasets/r/6118ad14-0fdc-490d-a07c-e0efed8653d8","Source : Région Bretagne","","odc-odbl","https://opendatacommons.org/licenses/odbl/1.0/",0,0,"","Details, ...",";"
