@@ -10,7 +10,7 @@ LOCATION=$(curl --connect-timeout 30 -sI $PERMALINK | grep -F -i 'Location:' | s
 
 if [ -n "$LOCATION" ]
 then
-    if [ "$(echo $LOCATION | grep -c '^https://data.gov.rs/s/resources/.*/jgpnis\.zip$')" == 1 ]
+    if [ "$(echo $LOCATION | grep -c '^https://data\.gov\.rs/s/resources/.*/gtfs.*\.zip$')" == 1 ]
     then
         RELEASE_URL=$LOCATION
     fi
