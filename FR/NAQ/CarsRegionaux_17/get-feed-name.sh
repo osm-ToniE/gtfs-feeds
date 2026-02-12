@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "FR-NOR-CarsRegionaux_17"
+echo "FR-NAQ-CarsRegionaux_17"

@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "FR-NOR-RespiRe"
+echo "FR-NAQ-RespiRe"
