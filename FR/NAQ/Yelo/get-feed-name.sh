@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "FR-NOR-Yelo"
+echo "FR-NAQ-Yelo"
