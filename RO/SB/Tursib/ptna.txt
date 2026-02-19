@@ -1,0 +1,2 @@
+id,language,network_name,network_name_url,prepared,aggregated,analyzed,normalized,feed_publisher_name,feed_publisher_url,release_date,release_url,license,license_url,original_license,original_license_url,has_shapes,consider_calendar,comment,details
+1,"ro","Tursib, Sibiu","https://tursib.ro/","","","","","TURSIB S.A., Sibiu","https://tursib.ro/","","https://tursib.ro/trasee/gtfs","Permisiune de utilizare a datelor format GTFS","https://wiki.openstreetmap.org/wiki/File:Permisiune_de_utilizare_a_datelor_format_GTFS.pdf","","",0,0,"","Detalii, ..."
