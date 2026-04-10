@@ -4,7 +4,7 @@
 # get URL to download latest GTFS feed
 #
 
-DATASET_ID="5aa94714c751df666fefc80f"
+DATASET_ID="63b4c3d2d7857ab0c49dde9a"
 
 JSON_URL="https://transport.data.gouv.fr/api/datasets/$DATASET_ID"
 
