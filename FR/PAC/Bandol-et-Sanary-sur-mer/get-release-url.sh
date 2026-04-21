@@ -13,7 +13,11 @@ then
     if [ "$(echo $LOCATION | grep -c 'bandol-sanary')" == 1 ]
     then
         RELEASE_URL=$LOCATION
+    else
+        curl --connect-timeout 30 -sI $PERMALINK | grep -i '^HTTP/' > ./release_date_error.log
     fi
+else
+    curl --connect-timeout 30 -sI $PERMALINK | grep -i '^HTTP/' > ./release_date_error.log
 fi
 
 echo $RELEASE_URL

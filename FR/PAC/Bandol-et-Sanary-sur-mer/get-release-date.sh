@@ -16,6 +16,8 @@ then
         if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
         then
             RELEASE_DATE=$result
+        else
+            curl --connect-timeout 30 -sI $RELEASE_URL | grep -i '^HTTP/' > ./release_date_error.log
         fi
     fi
 fi
