@@ -4,4 +4,4 @@
 # print name of GTFS feed
 #
 
-echo "BR-RJ-SMRT"
+echo "BR-RJ-SMTR"
