@@ -8,7 +8,7 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    LAST_MODIFIED=$(curl --connect-timeout 30 --ciphers DEFAULT@SECLEVEL=1 -sI $RELEASE_URL | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
 
     if [ -n "$LAST_MODIFIED" ]
     then
@@ -18,22 +18,20 @@ then
             RELEASE_DATE=$result
         fi
     else
-        curl --connect-timeout 30 -sI -v $RELEASE_URL 2>&1 | grep -E '(^HTTP/)|(SSL certificate problem)|(key too small)' > ./release_date_error.log
+        mkdir tempdir
 
-        if [ -s ./release_date_error.log ]
+        curl -s --ciphers DEFAULT@SECLEVEL=1 -o tempdir/gtfs.zip $RELEASE_URL
+
+        if [ -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
         then
-            if [ $(grep -c 'SSL certificate problem' ./release_date_error.log) -eq 1 ]
+            result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
+            if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
             then
-                curl -k --connect-timeout 30 -sI $RELEASE_URL 2>&1 | grep -i 'Content-Type' > ./release_date_error.log
+                RELEASE_DATE=$result
 
-                if [ $(grep -i -c 'Content-Type: text/html' ./release_date_error.log) -eq 1 ]
-                then
-                    curl -k --connect-timeout 30 -v $RELEASE_URL 2>&1 | \
-                    grep '<title>'                                    | \
-                    sed -e 's/^.*<title>//' -e 's/<\/title>.*$//'     > ./release_date_error.log
-                fi
+                mv tempdir $RELEASE_DATE
             fi
-       fi
+        fi
     fi
 fi
 
