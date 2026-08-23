@@ -1,2 +1,2 @@
 id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis,wn
-1,,"Navettes Guillestrois-Queyras","","",0,"",0,FR-PAC-NavettesQueyras,0
+1,,"Navettes Guillestrois-Queyras","","",0,"",0,FR-PAC-NavettesQueyras,
