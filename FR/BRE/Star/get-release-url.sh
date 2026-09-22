@@ -9,7 +9,7 @@ DATASET_ID="580defb1a3a7292dcfa9d33f"
 JSON_URL="https://transport.data.gouv.fr/api/datasets/$DATASET_ID"
 
 LOCATION=$(curl --connect-timeout 30 -s $JSON_URL -o -                                     | \
-         jq -r '.resources[] | select(.format=="GTFS") | (.updated + "_" + .original_url)' | \
+         jq -r '.resources[] | select(.format=="GTFS") | select(.id==83281) | (.updated + "_" + .original_url)' | \
          sort                                                                              | \
          head -1                                                                           | \
          sed -e 's/^.*Z_http/http/')
