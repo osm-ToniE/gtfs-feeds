@@ -8,7 +8,9 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    LAST_MODIFIED=$(curl --connect-timeout 30 --ciphers DEFAULT@SECLEVEL=1 -sI $RELEASE_URL | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    RESPONSE=$(curl --connect-timeout 30 --ciphers DEFAULT@SECLEVEL=1 -sI $RELEASE_URL)
+
+    LAST_MODIFIED=$(echo $RESPONSE | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
 
     if [ -n "$LAST_MODIFIED" ]
     then
@@ -30,6 +32,13 @@ then
                 RELEASE_DATE=$result
 
                 mv tempdir $RELEASE_DATE
+            fi
+        else
+            if [ -n "$RESPONSE" ]
+            then
+                echo "$RESPONSE" | grep -i '^HTTP/' > ./release_date_error.log
+            else
+                echo "No data in response" > ./release_date_error.log
             fi
         fi
     fi

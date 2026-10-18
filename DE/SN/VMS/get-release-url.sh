@@ -6,11 +6,17 @@
 
 PERMALINK="https://www.vms.de/GTFS_VMS.zip"
 
-LOCATION=$(curl --insecure --connect-timeout 30 -sI $PERMALINK | grep -F -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
+RESPONSE=$(curl --insecure --connect-timeout 30 -sI $PERMALINK)
+LOCATION=$(echo $RESPONSE | grep -F -i 'Location:' | sed -e 's/^Location:\s*//i' -e 's/\r$//')
 
-if [ -n "$LOCATION" ]
+if [ -n "$RESPONSE" ]
 then
-    RELEASE_URL=$LOCATION
+    if [ -n "$LOCATION" ]
+    then
+        RELEASE_URL=$LOCATION
+    fi
+else
+    echo "No data in response (timeout, blocked, ...)" > ./release_date_error.log
 fi
 
 echo $RELEASE_URL
