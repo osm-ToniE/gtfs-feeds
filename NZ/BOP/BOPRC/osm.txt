@@ -1,0 +1,3 @@
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis,stop_name_delimiter
+1,,"Baybus","","NZ-BOP-Baybus",0,"",0,NZ-BOP-Baybus,"-"
+S
