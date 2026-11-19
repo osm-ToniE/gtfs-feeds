@@ -11,7 +11,7 @@ then
     HEADERS=$(curl --connect-timeout 30 -sI $RELEASE_URL)
     curl_ret_code=$?
 
-    LAST_MODIFIED=$(echo $HEADERS | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
+    LAST_MODIFIED=$(echo $HEADERS | sed -e 's/\r /\n/g' | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
 
     if [ -n "$LAST_MODIFIED" ]
     then
