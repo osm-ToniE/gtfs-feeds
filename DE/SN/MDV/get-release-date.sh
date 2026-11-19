@@ -14,7 +14,7 @@ then
 
     ret_code=$?
 
-    if [ $ret_code == 0 -a -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
+    if [ $ret_code -eq 0 -a -f tempdir/gtfs.zip -a -s tempdir/gtfs.zip ]
     then
         result=$(unzip -l tempdir/gtfs.zip | awk '/20[0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ { print $2; }' | sort -u | tail -1)
         if [ "$(echo $result | grep -c '^20[0-9][0-9]-[01][0-9]-[0123][0-9]$')" == 1 ]
@@ -24,12 +24,12 @@ then
             mv tempdir $RELEASE_DATE
         fi
     else
-        if [ $ret_code != 0 ]
+        if [ $ret_code -ne 0 ]
         then
-            if [ $ret_code == 28 ]
+            if [ $ret_code -eq 28 ]
             then
                 echo "curl returned '$ret_code' - timeout" > ./release_date_error.log
-            elif [ %ret_code == 35 ]
+            elif [ $ret_code -eq 35 ]
             then
                 echo "curl returned '$ret_code' - SSL connect error. The SSL handshaking failed" > ./release_date_error.log
             else
