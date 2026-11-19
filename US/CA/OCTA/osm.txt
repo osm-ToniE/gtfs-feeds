@@ -1,2 +1,2 @@
-id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis
-1,,"Orange County Transportation Authority","OCTA","US-CA-OCTA",0,"",0,"US-CA-OCTA"
+id,prepared,network,network_short,network_guid,gtfs_agency_is_operator,trip_id_regex,gtfs_short_name_hack1,ptna_analysis,wn,stop_name_delimiter
+1,,"OC Bus","","",1,"",0,"US-CA-OCTA",0,"-"
