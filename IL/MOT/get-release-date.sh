@@ -8,12 +8,7 @@ RELEASE_URL=$(./get-release-url.sh)
 
 if [ -n "$RELEASE_URL" ]
 then
-    RELEASE_DIR=${RELEASE_URL%/*}
-    RELEASE_FILE=${RELEASE_URL##*/}
-    LAST_MODIFIED=$(wget --no-check-certificate -O - $RELEASE_DIR 2>&1  | \
-                    sed -e 's/<br>/\n/ig'                                   | \
-                    grep -F "$RELEASE_FILE"                                   | \
-                    sed -e 's/^\s*//' -e 's/\s.*$//')
+    LAST_MODIFIED=$(curl --connect-timeout 30 -sI $RELEASE_URL | grep -F -i 'last-modified:' | sed -e 's/^last-modified:\s*//i')
 
     if [ -n "$LAST_MODIFIED" ]
     then
@@ -22,6 +17,8 @@ then
         then
             RELEASE_DATE=$result
         fi
+    else
+        curl --connect-timeout 30 -sI $RELEASE_URL | grep -i '^HTTP/' > ./release_date_error.log
     fi
 fi
 
